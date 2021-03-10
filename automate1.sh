@@ -19,11 +19,7 @@ print_blue(){
 cd $PROJECT_DIR
 #Start Build Process
 print_blue "\n\n\nStarting"
-print_blue "\n\n\nCleaning...\n"
-./gradlew clean
 
-print_blue "\n\n\ncleanBuildCache...\n"
-./gradlew cleanBuildCache
 
 print_blue "\n\n\n build...\n"
 ./gradlew build
@@ -31,16 +27,6 @@ print_blue "\n\n\n build...\n"
 print_blue "\n\n\n assembleDebug...\n"
 ./gradlew assembleDebug
 
-#Install APK on device / emulator
-print_blue "installDebug...\n"
-./gradlew installDebug
-
-print_blue "\n\n\n Done Installing\n"
-#Input package
-read -p "please enter the package and name of MainActivity": PATH
-#Launch Main Activity
-adb shell am start -n "PATH" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
-print_blue "\n\n\n Launched main activity\n"
 #Copy APK to output folder
 cp "$PROJECT_DIR"/app/build/outputs/apk/debug/app-debug.apk $OUTPUT_DIR
 print_blue "\n\n\n Copying APK to outputs Done\n"
